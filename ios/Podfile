@@ -1,4 +1,6 @@
 # Resolve react_native_pods.rb with node to allow for hoisting
+pod 'RNGestureHandler', :podspec => '../node_modules/react-native-gesture-handler/RNGestureHandler.podspec'
+
 require Pod::Executable.execute_command('node', ['-p',
   'require.resolve(
     "react-native/scripts/react_native_pods.rb",
@@ -16,6 +18,8 @@ end
 
 target 'Deneme' do
   config = use_native_modules!
+
+  pod 'RNGestureHandler', :podspec => '../node_modules/react-native-gesture-handler/RNGestureHandler.podspec'
 
   use_react_native!(
     :path => config[:reactNativePath],
